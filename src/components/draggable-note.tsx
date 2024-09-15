@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { Note } from "../store/notes-store";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 
 interface DraggableNoteProps {
   note: Note;
@@ -13,12 +13,20 @@ interface DraggableNoteProps {
   index: number;
 }
 const colorClasses = {
-  yellow: "bg-yellow-200 border-yellow-400",
-  green: "bg-green-200 border-green-400",
-  blue: "bg-blue-200 border-blue-400",
-  purple: "bg-purple-200 border-purple-400",
-  pink: "bg-pink-200 border-pink-400",
+  yellow: "bg-yellow-200 border-yellow-500",
+  green: "bg-green-200 border-green-500",
+  blue: "bg-blue-200 border-blue-500",
+  purple: "bg-purple-200 border-purple-500",
+  pink: "bg-pink-200 border-pink-500",
 };
+
+const colors: (keyof typeof colorClasses)[] = [
+  "yellow",
+  "green",
+  "blue",
+  "purple",
+  "pink",
+];
 
 const DraggableNote = ({
   note,
@@ -81,42 +89,39 @@ const DraggableNote = ({
         top: note.y,
         zIndex: note.zIndex,
       }}
-      className={`w-64 ${
-        colorClasses[note.color]
-      } rounded-lg shadow-md border-2 cursor-move`}
       onMouseDown={handleMouseDown}
+      className={`size-72 aspect-square rounded-xl shadow-md border-4 cursor-move flex flex-col ${
+        colorClasses[note.color]
+      }`}
     >
-      <div
-        className="flex justify-between items-center p-2 border-b border-opacity-50"
-        style={{ borderColor: "currentColor" }}
-      >
-        <span className="font-bold">Note #{index + 1}</span>
+      <div className="flex justify-between items-center p-2 border-b border-opacity-50 border-zinc-500">
+        <span className="font-medium">Note: {index + 1}</span>
         <button
           onClick={() => deleteNote(note.id)}
-          className="text-gray-600 hover:text-red-600"
+          className="text-zinc-600 hover:text-rose-600"
         >
-          <XMarkIcon className="size-6" />
+          <XCircleIcon className="size-6" />
         </button>
       </div>
-      <div className="p-4">
+
+      <div className="p-2">
         <textarea
-          className="w-full h-32 p-2 mb-2 bg-transparent resize-none focus:outline-none placeholder-gray-500"
+          className="w-full h-32 p-2 mb-2 bg-transparent resize-none focus:outline-none placeholder-zinc-500"
           value={note.text}
           onChange={(e) => updateNote(note.id, e.target.value)}
           placeholder="Type your note here..."
           onFocus={() => updateNoteZIndex(note.id, Date.now())}
         />
-        <div className="flex space-x-2">
-          {(["yellow", "green", "blue", "purple", "pink"] as const).map(
-            (color) => (
-              <button
-                key={color}
-                className={`w-6 h-6 rounded-full ${colorClasses[color]} shadow-inner border`}
-                onClick={() => updateNoteColor(note.id, color)}
-              />
-            )
-          )}
-        </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-2 h-fit mt-auto p-2">
+        {colors.map((color) => (
+          <button
+            key={color}
+            className={`w-6 h-6 rounded-full shadow-inner border-2 ${colorClasses[color]}`}
+            onClick={() => updateNoteColor(note.id, color)}
+          />
+        ))}
       </div>
     </div>
   );

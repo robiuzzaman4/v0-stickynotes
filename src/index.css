@@ -11,5 +11,6 @@
     min-height: 100vh;
     position: relative;
     overflow: auto;
+    font-family: "Inter", system-ui;
   }
 }

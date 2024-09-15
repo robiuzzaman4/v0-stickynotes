@@ -87,7 +87,7 @@ const DraggableNote = ({
       onMouseDown={handleMouseDown}
     >
       <div
-        className="flex justify-between items-center p-2 border-b-2 border-opacity-50"
+        className="flex justify-between items-center p-2 border-b border-opacity-50"
         style={{ borderColor: "currentColor" }}
       >
         <span className="font-bold">Note #{index + 1}</span>
@@ -111,7 +111,7 @@ const DraggableNote = ({
             (color) => (
               <button
                 key={color}
-                className={`w-6 h-6 rounded-full ${colorClasses[color]} shadow-inner`}
+                className={`w-6 h-6 rounded-full ${colorClasses[color]} shadow-inner border`}
                 onClick={() => updateNoteColor(note.id, color)}
               />
             )

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface Note {
+export interface Note {
   id: string;
   text: string;
   x: number;
@@ -10,7 +10,7 @@ interface Note {
   zIndex: number;
 }
 
-interface NoteStore {
+export interface NoteStore {
   notes: Note[];
   addNote: (x: number, y: number) => void;
   updateNote: (id: string, text: string) => void;

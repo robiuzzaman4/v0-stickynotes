@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useNoteStore } from "../store/notes-store";
 import DraggableNote from "./draggable-note";
 import { PlusIcon } from "@heroicons/react/24/outline";
@@ -15,12 +14,6 @@ const StickyNotes = () => {
     updateNoteZIndex,
   } = useNoteStore();
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (notes.length === 0) {
-      handleAddNote();
-    }
-  }, [notes]);
 
   const handleAddNote = () => {
     const x = 20;

@@ -5,13 +5,12 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 interface DraggableNoteProps {
   note: Note;
-  addNote: (x: number, y: number) => void;
   updateNote: (id: string, text: string) => void;
   deleteNote: (id: string) => void;
   updateNotePosition: (id: string, x: number, y: number) => void;
   updateNoteColor: (id: string, color: Note["color"]) => void;
   updateNoteZIndex: (id: string, zIndex: number) => void;
-  index: string;
+  index: number;
 }
 const colorClasses = {
   yellow: "bg-yellow-200 border-yellow-400",

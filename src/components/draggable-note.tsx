@@ -90,9 +90,9 @@ const DraggableNote = ({
         </button>
       </div>
 
-      <div className="p-2">
+      <div className="px-4 ">
         <textarea
-          className="w-full h-32 p-2 mb-2 bg-transparent resize-none focus:outline-none placeholder-zinc-500"
+          className="w-full h-[196px] p-2 bg-transparent resize-none focus:outline-none placeholder-zinc-500"
           value={note.text}
           onChange={(e) => updateNote(note.id, e.target.value)}
           placeholder="Type your note here..."

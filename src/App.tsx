@@ -1,13 +1,16 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import StickyNotes from "./components/sticky-notes";
 import { useNoteStore } from "./store/notes-store";
+import { useState } from "react";
 
 const App = () => {
   const { addNote } = useNoteStore();
+  const [lastYPosition, setLastYPosition] = useState(20);
   const handleAddNote = () => {
     const x = 20;
-    const y = 80;
+    const y = lastYPosition;
     addNote(x, y);
+    setLastYPosition(lastYPosition + 20);
   };
 
   return (

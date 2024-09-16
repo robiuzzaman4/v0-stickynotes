@@ -23,6 +23,9 @@ const App = () => {
           <PlusIcon className="mr-2 size-6" />
           Add Note
         </button>
+        <a href="https://github.com/robiuzzaman4/v0-stickynotes" target="_blank" rel="noopener noreferrer">
+          <img src="./github.svg" alt="github icon" className="size-6" />
+        </a>
       </nav>
       <StickyNotes />
     </main>

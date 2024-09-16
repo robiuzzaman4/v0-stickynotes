@@ -34,7 +34,7 @@ const DraggableNote = ({
       x: e.clientX - note.x,
       y: e.clientY - note.y,
     });
-    updateNoteZIndex(note.id, Date.now());
+    updateNoteZIndex(note.id, 9999);
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -96,7 +96,7 @@ const DraggableNote = ({
           value={note.text}
           onChange={(e) => updateNote(note.id, e.target.value)}
           placeholder="Type your note here..."
-          onFocus={() => updateNoteZIndex(note.id, Date.now())}
+          onFocus={() => updateNoteZIndex(note.id, 9999)}
         />
       </div>
 

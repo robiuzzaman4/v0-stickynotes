@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { getRandomColor } from "../utils/getRandomColor";
 
 export interface Note {
   id: string;
@@ -33,7 +34,7 @@ export const useNoteStore = create<NoteStore>()(
               text: "",
               x,
               y,
-              color: "yellow",
+              color: getRandomColor(),
               zIndex: state.notes.length + 1,
             },
           ],
@@ -63,7 +64,9 @@ export const useNoteStore = create<NoteStore>()(
       updateNoteZIndex: (id, zIndex) =>
         set((state) => ({
           notes: state.notes.map((note) =>
-            note.id === id ? { ...note, zIndex } : note
+            note.id === id
+              ? { ...note, zIndex }
+              : { ...note, zIndex: note.zIndex - 1 }
           ),
         })),
     }),

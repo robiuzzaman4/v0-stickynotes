@@ -66,7 +66,7 @@ export const useNoteStore = create<NoteStore>()(
           notes: state.notes.map((note) =>
             note.id === id
               ? { ...note, zIndex }
-              : { ...note, zIndex: note.zIndex - 1 }
+              : { ...note, zIndex: Math.max(note.zIndex - 1, 0) }
           ),
         })),
     }),
